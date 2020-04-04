@@ -2,6 +2,8 @@
 
 Final Project Attendance SMM
 
+checking UI/UX
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
