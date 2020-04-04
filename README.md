@@ -5,10 +5,10 @@ Final Project Attendance SMM
 
 ## Upcoming Features
 
-- [ ] moor user table
-- [x] implements google login firebase
-- [x] moor employee, sites, and attendance table
-- [x] bottom navigation (home, history, user management)
-- [x] QR scan
-- [x] web socket indicator
+- [x] moor user table
+- [ ] implements google login firebase
+- [ ] moor employee, sites, and attendance table
+- [ ] bottom navigation (home, history, user management)
+- [ ] QR scan
+- [ ] web socket indicator
 
