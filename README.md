@@ -1,7 +1,7 @@
 # simonaapp
 
 Final Project Attendance SMM
-
+test
 checking UI/UX
 
 ## Getting Started
