@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "308415242299",
+    "firebase_url": "https://simona-84fd4.firebaseio.com",
+    "project_id": "simona-84fd4",
+    "storage_bucket": "simona-84fd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308415242299:android:0573af90e1555deeda3c1e",
+        "android_client_info": {
+          "package_name": "com.onesquad.simonaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308415242299-njb70rcijqk7sqfa2flk2nq40drs9ifo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.onesquad.simonaapp",
+            "certificate_hash": "7f91081a76cd95409464db01bf516ee9f45c22b4"
+          }
+        },
+        {
+          "client_id": "308415242299-vj241r85r2t0dph8n6dhd20q34etosl1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWKYNJAcquL6GSzk3hcNwCBodkpgL8Gjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308415242299-vj241r85r2t0dph8n6dhd20q34etosl1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
