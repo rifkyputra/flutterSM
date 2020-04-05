@@ -6,7 +6,6 @@ import 'package:simonaapp/screens/login_google_page.dart';
 
 void main() async {
   runApp(MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
