@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simonaapp/bloc/login_req/bloc.dart';
 import 'package:simonaapp/bloc/web_socket_online_indicator/bloc.dart';
 import 'package:simonaapp/screens/login_google_page.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
-  await DotEnv().load('.env');
   runApp(MyApp());
 
 }
