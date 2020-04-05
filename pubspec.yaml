@@ -19,6 +19,7 @@ dependencies:
   path: ^1.6.4
   path_provider: ^1.6.5
   google_sign_in: ^4.4.0
+  qrscan: ^0.2.17
   firebase_auth: ^0.15.5+3
   flutter_auth_buttons: ^0.8.0
   font_awesome_flutter: ^8.8.1
