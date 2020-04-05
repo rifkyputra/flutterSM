@@ -1,28 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:simonaapp/bloc/login_req/bloc.dart';
-import 'package:simonaapp/screens/login_google_page.dart';
+import 'package:simonaapp/bloc/authentication/bloc.dart';
+import 'package:simonaapp/login/sign_in.dart';
+import 'package:simonaapp/screens/HomeScreen.dart';
+import 'package:simonaapp/login/login.dart';
+import 'package:simonaapp/screens/splash_screen.dart';
+import 'package:simonaapp/login/simple_bloc_delegate.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  BlocSupervisor.delegate = SimpleBlocDelegate();
+  final UserRepository userRepository = UserRepository();
+  runApp(
+    BlocProvider(
+      create: (context) => AuthenticationBloc(
+        userRepository: userRepository,
+      )..add(AppStarted()),
+      child: MyApp(userRepository: userRepository),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
+  final UserRepository _userRepository;
+
+  MyApp({Key key, @required UserRepository userRepository})
+      : assert(userRepository != null),
+        _userRepository = userRepository,
+        super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => LoginReqBloc(),
-          )
-        ],
-        child: MaterialApp(
-          title: 'Material App',
-          home: Scaffold(
-            appBar: AppBar(
-              title: Text('Material App Bar'),
-            ),
-            body: LoginPage(),
-
-          ),
-        ));
+    return MaterialApp(
+      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          if (state is Unauthenticated) {
+            return LoginScreen(userRepository: _userRepository);
+          }
+          if (state is Authenticated) {
+            return HomeScreen(name: state.displayName);
+          }
+          return SplashScreen();
+        },
+      ),
+    );
   }
 }
