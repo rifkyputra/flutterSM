@@ -22,6 +22,7 @@ dependencies:
   simple_animations: ^1.3.11
   uuid: ^2.0.4
   flutter_dotenv:
+  qrscan: ^0.2.17
 
 dev_dependencies:
   flutter_test:

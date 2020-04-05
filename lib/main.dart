@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simonaapp/bloc/login_req/bloc.dart';
 import 'package:simonaapp/bloc/web_socket_online_indicator/bloc.dart';
+import 'package:simonaapp/screens/homepage.dart';
 import 'package:simonaapp/screens/login_google_page.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import './screens/homepage.dart';
+import './bloc/navbar/navbar_bloc.dart';
 
 void main() async {
   await DotEnv().load('.env');
@@ -21,7 +24,10 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => OnlineIndicatorBloc(),
-          )
+          ),
+          BlocProvider(
+            create: (context) => NavbarBloc()
+          ),
         ],
         child: MaterialApp(
           title: 'Material App',
