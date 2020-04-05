@@ -492,7 +492,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.4"
-<<<<<<< HEAD
   pub_semver:
     dependency: transitive
     description:
@@ -507,8 +506,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.5"
-=======
->>>>>>> 96d8cb895f405f8d7a404804f093c4a17daefbf7
   qrscan:
     dependency: "direct main"
     description:

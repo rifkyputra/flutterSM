@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simonaapp/bloc/navbar/navbar_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import './home_screen.dart';
+import '../bloc/navbar/home_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -9,29 +9,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  NavbarBloc _navbarBloc;
 
-  @override
-  void initState() { 
-    super.initState();
-    _navbarBloc = NavbarBloc();
-  }
-
-  // @override
-  // void dispose() {
-  //   _navbarBloc.dispose();
-  //   super.dispose();
-  // }
-  
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
-       bloc: _navbarBloc,
+    return BlocBuilder<NavbarBloc, NavbarStateScreen>(
        builder: (BuildContext context, NavbarStateScreen state) {
+         print(state.runtimeType);
+         Widget render;
         if (state is Homepage)
-          return buildHomepage(state.title, Colors.blue, state.itemIndex);
-        if (state is Profile)
-          return buildHomepage(state.title, Colors.red, state.itemIndex);
+          render = buildHomepage(state.title, Colors.blue, state.itemIndex);
+        else if (state is Profile)
+          render = buildHomepage(state.title, Colors.red, state.itemIndex);
+        else
+          render = Container(child: Text("Empty"),);
+        return render;
        },
     );
   }
@@ -46,8 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (index) {
-          if (index==0) _navbarBloc.add(NavbarItems.Homepage);
-          if (index==1) _navbarBloc.add(NavbarItems.Profile);
+          if (index==0) context.bloc<NavbarBloc>().add(NavbarItems.Homepage);
+          if (index==1) context.bloc<NavbarBloc>().add(NavbarItems.Profile);
         },
         items: [
           BottomNavigationBarItem(icon:Icon(Icons.home), title: Text('Homepage')),

@@ -14,21 +14,16 @@ dependencies:
   sized_context: ^0.2.1+1
   moor: ^2.4.2
   moor_ffi: ^0.4.0
-<<<<<<< HEAD
   path: ^1.6.4
   path_provider: ^1.6.5
   google_sign_in: ^4.4.0
-=======
   qrscan: ^0.2.17
   bloc: ^3.0.0
-
->>>>>>> 96d8cb895f405f8d7a404804f093c4a17daefbf7
   cupertino_icons: ^0.1.3
   flutter_socket_io: ^0.6.0
   simple_animations: ^1.3.11
   uuid: ^2.0.4
   flutter_dotenv:
-  qrscan: ^0.2.17
 
 dev_dependencies:
   flutter_test:
