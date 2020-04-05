@@ -4,10 +4,10 @@ import 'package:simonaapp/bloc/login_req/bloc.dart';
 import 'package:simonaapp/bloc/web_socket_online_indicator/bloc.dart';
 import 'package:simonaapp/screens/homepage.dart';
 import 'package:simonaapp/screens/login_google_page.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import './screens/homepage.dart';
 import 'package:simonaapp/bloc/navbar/navbar_bloc.dart';
 import 'package:simonaapp/screens/homepage.dart';
+
 
 void main() async {
   runApp(MyApp());
