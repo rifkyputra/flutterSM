@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
               title: Text('Simona'),
             ),
             body: LoginPage(),
-
           ),
         ));
     return MaterialApp(

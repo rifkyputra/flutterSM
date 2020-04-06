@@ -1,10 +1,11 @@
-import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:simonaapp/bloc/navbar/navbar_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/navbar/home_screen.dart';
 import 'package:simonaapp/widgets/sign_in.dart';
 import 'package:simonaapp/screens/login_google_page.dart';
+
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -29,7 +30,6 @@ class _MyHomePageState extends State<MyHomePage> {
        },
     );
   }
-
   logOut() async{
     await googleSignIn.signOut().then((_){
       Navigator.of(context).pushAndRemoveUntil(
@@ -38,7 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
           }), ModalRoute.withName('/'));
     });
   }
-
   Scaffold buildHomepage(String title, Color color, int currentIndex) {
     return Scaffold(
       appBar: AppBar(

@@ -6,12 +6,12 @@ import 'package:simonaapp/bloc/web_socket_online_indicator/bloc.dart';
 import 'package:simonaapp/screens/sign_up_page.dart';
 import 'package:simonaapp/services/moor/moor.dart';
 import 'package:sized_context/sized_context.dart';
+
 import 'package:simonaapp/screens/homepage.dart';
 import 'package:simonaapp/widgets/sign_in.dart';
 
 class LoginPage extends StatelessWidget {
   static String tag = 'login-page';
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -75,6 +75,7 @@ class LoginPage extends StatelessWidget {
                             context.bloc<LoginReqBloc>().add(UserLogin("iiii"));
                           },
                         ),
+
                         Material(
                           borderRadius: BorderRadius.circular(30.0),
                           shadowColor: Colors.white,
@@ -109,11 +110,14 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                         ),
+
                       ],
                     );
                   },
                 ),
+
               ),
+
             ],
           ),
           SingleChildScrollView(
