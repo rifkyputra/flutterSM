@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
             appBar: AppBar(
               title: Text('Material App Bar'),
             ),
-            body: MyHomePage(),
+            body: LoginPage(),
 
           ),
         ));
