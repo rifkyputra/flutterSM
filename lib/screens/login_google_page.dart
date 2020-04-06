@@ -7,7 +7,11 @@ import 'package:simonaapp/screens/sign_up_page.dart';
 import 'package:simonaapp/services/moor/moor.dart';
 import 'package:sized_context/sized_context.dart';
 
+import 'package:simonaapp/screens/homepage.dart';
+import 'package:simonaapp/widgets/sign_in.dart';
+
 class LoginPage extends StatelessWidget {
+  static String tag = 'login-page';
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -71,11 +75,49 @@ class LoginPage extends StatelessWidget {
                             context.bloc<LoginReqBloc>().add(UserLogin("iiii"));
                           },
                         ),
+
+                        Material(
+                          borderRadius: BorderRadius.circular(30.0),
+                          shadowColor: Colors.white,
+                          color: Colors.white12,
+                          elevation: 3.0,
+                          child: MaterialButton(
+                            minWidth: 200.0,
+                            height: 25.0,
+                            onPressed: () {
+                              signInWithGoogle().whenComplete((){
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(builder: (context) {
+                                      return MyHomePage();
+                                    }), ModalRoute.withName('/'));
+                              });
+                              },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image(
+                                    image: AssetImage('assets/google_logo.png'),
+                                    height: 35.0),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20.0),
+                                  child: Text(
+                                    'Sign in with Google',
+                                    style: TextStyle(fontSize: 20, color: Colors.black54),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+
                       ],
                     );
                   },
                 ),
-              )
+
+              ),
+
             ],
           ),
           SingleChildScrollView(

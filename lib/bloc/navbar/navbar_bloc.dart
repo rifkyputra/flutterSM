@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:simonaapp/bloc/navbar/home_screen.dart';
 
+
 part 'navbar_event.dart';
 part 'navbar_state.dart';
 

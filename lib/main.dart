@@ -33,10 +33,9 @@ class MyApp extends StatelessWidget {
           title: 'Material App',
           home: Scaffold(
             appBar: AppBar(
-              title: Text('Material App Bar'),
+              title: Text('Simona'),
             ),
-            body: MyHomePage(),
-
+            body: LoginPage(),
           ),
         ));
     return MaterialApp(
