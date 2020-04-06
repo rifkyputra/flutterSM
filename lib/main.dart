@@ -41,7 +41,9 @@ bool online = true;
             appBar: AppBar(
               title: Text('Simona'),
             ),
+
             body: online? LoginPage() : SignInPage()
+
 
           ),
         )

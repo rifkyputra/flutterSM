@@ -3,8 +3,10 @@ import 'package:flutter_socket_io/socket_io_manager.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class OnlineIndicatorService {
+
   String WEB_SOCKET_URL='http://192.168.1.102:5000';
 //  String WEB_SOCKET_URL='http://10.0.2.2:5000';
+
   SocketIO socket;
   Function statusCallback;
   OnlineIndicatorService(this.statusCallback);
