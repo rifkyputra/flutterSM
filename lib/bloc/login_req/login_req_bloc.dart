@@ -44,7 +44,7 @@ class LoginReqBloc extends Bloc<LoginReqEvent, LoginReqState> {
         break;
 
       case CheckUserInLocalDB:
-        bool isExist = await LoginLocal().searchUserExist(event.user);
+        bool isExist = await LoginLocal().searchUserExist();
         print('is exsist : ' + isExist.toString());
         if(isExist) yield UserLocalExistGoToLogin();
         else yield ThrowToSignUpPage();
@@ -54,7 +54,10 @@ class LoginReqBloc extends Bloc<LoginReqEvent, LoginReqState> {
         int newusr;
         try {
           newusr = await LoginLocal().newUser(event.formData);
-          print(newusr);
+          if(newusr == null){
+            yield RegisterNewUserFailed();
+            break;
+          }
         }catch(e) {
         }
         yield RegisterNewUserSuccess();

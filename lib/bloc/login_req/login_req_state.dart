@@ -44,3 +44,5 @@ class UserLocalExistGoToLogin extends LoginReqState {
 class RegisterNewUserSuccess extends LoginReqState {
 
 }
+
+class RegisterNewUserFailed extends LoginReqState{}

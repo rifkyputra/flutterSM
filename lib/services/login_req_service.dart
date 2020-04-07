@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:simonaapp/constants/backendURL.dart';
 
 
 class LoginRequestService {
-  final String url = 'http://localhost:5500/';
+  final String url = Server().urlEmulator;
 
 
 

@@ -1,20 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simonaapp/bloc/login_req/bloc.dart';
 import 'package:simonaapp/screens/homepage.dart';
 import 'package:simonaapp/screens/sign_up_page.dart';
+import 'package:simonaapp/services/login_local_service.dart';
 import 'package:simonaapp/services/moor/moor.dart';
 
 class SignInPage extends StatelessWidget {
-//check user
-  bool userexist = true;
-//  bool userexist = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: userexist? MyHomePage() : SignInPage()
+      body: SignIn()
 
     );
   }
@@ -47,6 +46,15 @@ class SignIn extends StatelessWidget {
                   Material(
                     elevation: 3,
                     child: TextFormField(
+                        validator: (val) {
+                          if(val.isEmpty) {
+                            return 'enter text!';
+                          }
+                          return null;
+                        },
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(25)
+                        ],
                         onSaved: (value) => this.username = value,
                         decoration: InputDecoration(
                             labelText: "username",
@@ -60,6 +68,12 @@ class SignIn extends StatelessWidget {
                   Material(
                     elevation: 3,
                     child: TextFormField(
+                      validator: (val) {
+                        if(val.isEmpty) {
+                          return 'enter text!';
+                        }
+                        return null;
+                      },
                       onSaved: (val) => this.password = val,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -79,15 +93,50 @@ class SignIn extends StatelessWidget {
                     child: BlocBuilder<LoginReqBloc,LoginReqState>(
                       builder: (context,state) {
                         return FlatButton(
-                          color: Colors.black,
-                          child: Text("Login", style: TextStyle(
+                          color: Colors.indigo,
+                          child: Text("Sign In", style: TextStyle(
                               color: Colors.white
                           ),
                           ),
                           onPressed: () {
+                            if(_formKey.currentState.validate()) {
+                            _formKey.currentState.save();
+//                              print(this.username);
+                              var val = LoginLocal()
+                                  .userLogin(this.username.trim(), this.password);
+                              val.then((v) {
+                                if(v) {
+                                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+                                    builder: (context) {
+                                      return MyHomePage();
+                                    }
+                                  ),ModalRoute.withName('/'));
+                                }
+                              });
+
+                            }
                           },
                         );
                       },
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Don't have account ?"),
+                        FlatButton(
+                          child: Text('Sign up'),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) {
+                                  return SignUpPage();
+                                }
+                            ));
+                          },
+                        )
+                      ],
                     ),
                   )
                 ],
