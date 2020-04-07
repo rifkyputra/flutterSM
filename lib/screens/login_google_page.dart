@@ -11,7 +11,7 @@ import 'package:simonaapp/screens/homepage.dart';
 import 'package:simonaapp/widgets/sign_in.dart';
 
 class LoginPage extends StatelessWidget {
-  static String tag = 'login-page';
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -68,7 +68,7 @@ class LoginPage extends StatelessWidget {
                         FlatButton(
                           color: Colors.indigoAccent,
                           child: Text(
-                            "Sign In with Google",
+                            "Sign Up",
                             style: TextStyle(color: Colors.white),
                           ),
                           onPressed: () {
@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
                             minWidth: 200.0,
                             height: 25.0,
                             onPressed: () {
-                              signInWithGoogle().whenComplete((){
+                              signInWithGoogle().then((value){
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(builder: (context) {
                                       return MyHomePage();
