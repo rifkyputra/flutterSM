@@ -6,8 +6,6 @@ import 'package:simonaapp/screens/homepage.dart';
 import 'package:simonaapp/screens/login_google_page.dart';
 import './screens/homepage.dart';
 import 'package:simonaapp/bloc/navbar/navbar_bloc.dart';
-import 'package:simonaapp/screens/homepage.dart';
-
 
 void main() async {
   runApp(MyApp());
@@ -30,11 +28,7 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
-          title: 'Material App',
           home: Scaffold(
-            appBar: AppBar(
-              title: Text('Material App Bar'),
-            ),
             body: MyHomePage(),
 
           ),

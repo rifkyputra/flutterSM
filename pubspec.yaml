@@ -42,4 +42,6 @@ flutter:
   assets:
     - assets/google_logo.png
     - assets/logo_smm.png
+    - assets/bg1.jpg
+    - assets/user.json
     - .env
