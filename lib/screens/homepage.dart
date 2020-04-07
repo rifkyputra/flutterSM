@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) {
             return LoginPage();
-          }), ModalRoute.withName('/'));
+          }), ModalRoute.withName(''));
     });
   }
   Scaffold buildHomepage(String title, Color color, int currentIndex) {

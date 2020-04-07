@@ -5,6 +5,7 @@ import 'package:simonaapp/bloc/web_socket_online_indicator/bloc.dart';
 import 'package:simonaapp/screens/homepage.dart';
 import 'package:simonaapp/screens/login_google_page.dart';
 import 'package:simonaapp/screens/splash_screen.dart';
+
 import './screens/homepage.dart';
 import 'package:simonaapp/bloc/navbar/navbar_bloc.dart';
 import 'package:simonaapp/screens/homepage.dart';
@@ -34,9 +35,9 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Material App',
           home: SplashScreen(),
-        ));
-    return MaterialApp(
-      home: MyHomePage(),
-    );
+    ));
+
+
+
   }
 }
