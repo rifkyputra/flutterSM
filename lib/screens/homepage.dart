@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:simonaapp/bloc/navbar/navbar_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/navbar/home_screen.dart';
+import 'package:simonaapp/widgets/sign_in.dart';
+import 'package:simonaapp/screens/login_google_page.dart';
+
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -30,9 +33,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+
   Scaffold buildHomepage(String title, Color color, int currentIndex, Widget screen) {
     return Scaffold(
       // appBar: AppBar(title: Text(title)),
+
       body: Container(
         color: color,
         child: screen,

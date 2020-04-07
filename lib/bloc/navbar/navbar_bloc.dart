@@ -17,6 +17,7 @@ import 'package:simonaapp/screens/history.dart';
 import 'package:simonaapp/screens/profile_list.dart';
 import 'package:simonaapp/widgets/absent_card.dart';
 
+
 part 'navbar_event.dart';
 part 'navbar_state.dart';
 

@@ -7,7 +7,11 @@ import 'package:simonaapp/screens/sign_up_page.dart';
 import 'package:simonaapp/services/moor/moor.dart';
 import 'package:sized_context/sized_context.dart';
 
+import 'package:simonaapp/screens/homepage.dart';
+import 'package:simonaapp/widgets/sign_in.dart';
+
 class LoginPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -64,19 +68,94 @@ class LoginPage extends StatelessWidget {
                         FlatButton(
                           color: Colors.indigoAccent,
                           child: Text(
-                            "Sign In with Google",
+                            "Sign Up",
                             style: TextStyle(color: Colors.white),
                           ),
                           onPressed: () {
                             context.bloc<LoginReqBloc>().add(UserLogin("iiii"));
                           },
                         ),
+
+<<<<<<< HEAD
+=======
+                        Material(
+                          borderRadius: BorderRadius.circular(30.0),
+                          shadowColor: Colors.white,
+                          color: Colors.white12,
+                          elevation: 3.0,
+                          child: MaterialButton(
+                            minWidth: 200.0,
+                            height: 25.0,
+                            onPressed: () {
+                              signInWithGoogle().then((value){
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(builder: (context) {
+                                      return MyHomePage();
+                                    }), ModalRoute.withName('/'));
+                              });
+                              },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image(
+                                    image: AssetImage('assets/google_logo.png'),
+                                    height: 35.0),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20.0),
+                                  child: Text(
+                                    'Sign in with Google',
+                                    style: TextStyle(fontSize: 20, color: Colors.black54),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+
+>>>>>>> 86aff375052b5cb40d2104e691299a18481a412f
                       ],
                     );
                   },
                 ),
-              )
+
+              ),
+
             ],
+          ),
+          Material(
+            borderRadius: BorderRadius.circular(30.0),
+            shadowColor: Colors.white,
+            color: Colors.white12,
+            elevation: 3.0,
+            child: MaterialButton(
+              minWidth: 200.0,
+              height: 25.0,
+              onPressed: () {
+                signInWithGoogle().whenComplete((){
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) {
+                        return MyHomePage();
+                      }), ModalRoute.withName('/'));
+                });
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image(
+                      image: AssetImage('assets/google_logo.png'),
+                      height: 35.0),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: Text(
+                      'Sign in with Google',
+                      style: TextStyle(fontSize: 20, color: Colors.black54),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
           SingleChildScrollView(
             child: Container(
