@@ -19,7 +19,7 @@ LazyDatabase _openConnection() {
 
 class Users extends Table {
   TextColumn get id => text().withDefault(Constant(Uuid().v1()))();
-  TextColumn get username => text().withLength(min: 7, max: 50)();
+  TextColumn get username => text().withLength(min: 7, max: 50).customConstraint('UNIQUE')();
   TextColumn get password => text().withLength(min: 7, max: 100)();
 }
 
@@ -40,9 +40,12 @@ class Employees extends Table {
 
 class Attendances extends Table {
   TextColumn get id => text().withDefault(Constant(Uuid().v1()))();
+  TextColumn get employeeName => text()();
   TextColumn get enterAt => text().nullable()();
   TextColumn get outAt => text().nullable()();
   TextColumn get date => text()();
+  TextColumn get site => text()();
+  TextColumn get sync => text()();
 }
 
 class Sites extends Table {
@@ -57,7 +60,7 @@ class AppDB extends _$AppDB {
   AppDB() : super(_openConnection());
 
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 7;
 }
 
 @UseDao(tables: [Users, Employees, Attendances, Sites])
@@ -66,13 +69,56 @@ class UserDao extends DatabaseAccessor<AppDB> with _$UserDaoMixin {
 
   UserDao(this.db) : super(db);
 
-  Future<List<User>> getByUsername(String username) {
-    print("username" +username);
-    return (select(users)
-      ..where((u) => u.username.like('%$username%'))
-      ..limit(3)).get();
+  //
+  // Attendance
+  //
+  Future<List<Attendance>> getAllAttendance() {
+    return select(attendances).get();
   }
 
+  Future<List<Attendance>> getAttendanceBySite(siteName) {
+    return (select(attendances)
+      ..where((att) => att.site.equals(siteName.trim()))
+    ).get();
+  }
+
+  Future<List<Attendance>> getAttendanceByName(employeeName) {
+    return (select(attendances)
+        ..where((att) => att.employeeName.equals(employeeName))
+    ).get();
+  }
+
+  Future createNew(attData) {
+    return into(attendances).insert(attData);
+  }
+  
+  Future<List> getAttendanceNotSynced() {
+    return (select(attendances)
+      ..where((att) => att.sync.equals("no"))
+    ).get();
+  }
+
+  /*
+  // Attendance
+  */
+
+  /*
+  // Site
+  */
+  Future getAllSite() => select(sites).get();
+  /*
+  // Site
+  */
+
+
+  /*
+  //User
+   */
+  Future<List<User>> getByUsername(String username) {
+    return (select(users)
+      ..where((u) => u.username.equals(username.trim()))
+      ..limit(3)).get();
+  }
   Future<List<User>> getAll() {
     return select(users).get();
   }
@@ -80,5 +126,27 @@ class UserDao extends DatabaseAccessor<AppDB> with _$UserDaoMixin {
   Future updateTask(Insertable<User> user) => update(users).replace(user);
   Future deleteTask(Insertable<User> user) => delete(users).delete(user);
 
-  Future postUser(formData) => into(users).insert(formData);
+  Future postUser(formData) {
+    User userTrimmed = User(username: formData.username.toString().trim(), password: formData.password.toString().trim());
+    return into(users).insert(userTrimmed);
+
+  }
+  /*
+  // User
+   */
+
+  /*
+  // Employee
+   */
+  Future getAllEmployee() => select(employees).get();
+
+  Future getEmployeeByID(id) {
+    return (select(employees) 
+      ..where((em) => em.id.equals(id))
+    ).get();
+  }
+  
+  /*
+  // Employee
+   */
 }

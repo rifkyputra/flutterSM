@@ -9,13 +9,29 @@ class LoginLocal {
   factory LoginLocal() {
     return singleton;
   }
+
+  Future userLogin(String username, String password) async {
+    List user;
+    try {
+      user = await db.getByUsername(username);
+//      if(user[0].password)
+      if(user[0].password == password) return true;
+      else return false;
+      print(user[0].password );
+
+    }catch(e) {
+      print(e);
+    }
+    return false;
+  }
+
   Future getAll() async {
     return await db.getAll();
   }
-  Future searchUserExist(String username)async {
+  Future searchUserExist()async {
     List user;
     try{
-      user = await db.getByUsername(username);
+      user = await db.getAll();
       print(user);
       if(user.length <= 0 || user == null) return false;
     } catch(e) {

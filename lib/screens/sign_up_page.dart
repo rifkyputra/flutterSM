@@ -6,14 +6,10 @@ import 'package:simonaapp/screens/sign_in_page.dart';
 import 'package:simonaapp/services/moor/moor.dart';
 
 class SignUpPage extends StatelessWidget {
-//  MockupDB
-  bool DB = true;
-//  bool DB = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: (DB == null)? SignUpPage() : SignInPage()
+      body: SignUp()
 //      body: DB? SignUpPage() : SignInPage()
     );
   }
@@ -71,7 +67,29 @@ class SignUp extends StatelessWidget {
                 Divider(),
                 BlocListener<LoginReqBloc,LoginReqState>(
                   listener: (context,state){
-                    if(state is RegisterNewUserSuccess) print("new user registered");
+                    if(state is RegisterNewUserSuccess) {
+                      Scaffold.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("Register Success"),
+                          )
+                      );
+                      Future.delayed(Duration(seconds: 1), () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return SignInPage();
+                            }
+                          ),
+                          ModalRoute.withName('/signin')
+                        );
+                      });
+                    }
+                    if(state is RegisterNewUserFailed) {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text("Register Failed"),
+                      ));
+                    }
                   },
 
                   child: BlocBuilder<LoginReqBloc,LoginReqState>(

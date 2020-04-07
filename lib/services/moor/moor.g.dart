@@ -127,7 +127,7 @@ class $UsersTable extends Users with TableInfo<$UsersTable, User> {
   GeneratedTextColumn get username => _username ??= _constructUsername();
   GeneratedTextColumn _constructUsername() {
     return GeneratedTextColumn('username', $tableName, false,
-        minTextLength: 7, maxTextLength: 50);
+        minTextLength: 7, maxTextLength: 50, $customConstraints: 'UNIQUE');
   }
 
   final VerificationMeta _passwordMeta = const VerificationMeta('password');
