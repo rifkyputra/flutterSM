@@ -76,41 +76,6 @@ class LoginPage extends StatelessWidget {
                           },
                         ),
 
-                        Material(
-                          borderRadius: BorderRadius.circular(30.0),
-                          shadowColor: Colors.white,
-                          color: Colors.white12,
-                          elevation: 3.0,
-                          child: MaterialButton(
-                            minWidth: 200.0,
-                            height: 25.0,
-                            onPressed: () {
-                              signInWithGoogle().whenComplete((){
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(builder: (context) {
-                                      return MyHomePage();
-                                    }), ModalRoute.withName('/'));
-                              });
-                              },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Image(
-                                    image: AssetImage('assets/google_logo.png'),
-                                    height: 35.0),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: Text(
-                                    'Sign in with Google',
-                                    style: TextStyle(fontSize: 20, color: Colors.black54),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-
                       ],
                     );
                   },
@@ -119,6 +84,40 @@ class LoginPage extends StatelessWidget {
               ),
 
             ],
+          ),
+          Material(
+            borderRadius: BorderRadius.circular(30.0),
+            shadowColor: Colors.white,
+            color: Colors.white12,
+            elevation: 3.0,
+            child: MaterialButton(
+              minWidth: 200.0,
+              height: 25.0,
+              onPressed: () {
+                signInWithGoogle().whenComplete((){
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) {
+                        return MyHomePage();
+                      }), ModalRoute.withName('/'));
+                });
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image(
+                      image: AssetImage('assets/google_logo.png'),
+                      height: 35.0),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: Text(
+                      'Sign in with Google',
+                      style: TextStyle(fontSize: 20, color: Colors.black54),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
           SingleChildScrollView(
             child: Container(
