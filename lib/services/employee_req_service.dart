@@ -16,4 +16,12 @@ class EmployeeRequest {
 
     return employee;
   }
+
+  NewEmployee() async {
+    try {
+      await Dio().post(Server().urlEmulator + '/employee');
+    }catch(e) {
+      print(e);
+    }
+  }
 }
