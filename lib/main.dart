@@ -10,8 +10,6 @@ import './screens/homepage.dart';
 import 'package:simonaapp/bloc/navbar/navbar_bloc.dart';
 import 'package:simonaapp/screens/homepage.dart';
 
-import 'package:simonaapp/services/employee_req_service.dart';
-
 
 void main() async {
   runApp(MyApp());
@@ -36,8 +34,6 @@ class MyApp extends StatelessWidget {
           title: 'Material App',
           home: SplashScreen(),
     ));
-
-
 
   }
 }

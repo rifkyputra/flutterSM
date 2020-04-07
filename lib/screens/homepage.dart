@@ -21,47 +21,37 @@ class _MyHomePageState extends State<MyHomePage> {
          print(state.runtimeType);
          Widget render;
         if (state is Homepage)
-          render = buildHomepage(state.title, Colors.blue, state.itemIndex);
+          render = buildHomepage(state.title, Colors.blue, state.itemIndex, state.screen);
+        else if (state is History)
+          render = buildHomepage(state.title, Colors.blue, state.itemIndex, state.history);
         else if (state is Profile)
-          render = buildHomepage(state.title, Colors.red, state.itemIndex);
+          render = buildHomepage(state.title, Colors.red, state.itemIndex, state.profile);
         else
           render = Container(child: Text("Empty"),);
         return render;
        },
     );
   }
-  logOut() async{
-    await googleSignIn.signOut().then((_){
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) {
-            return LoginPage();
-          }), ModalRoute.withName(''));
-    });
-  }
-  Scaffold buildHomepage(String title, Color color, int currentIndex) {
+
+
+  Scaffold buildHomepage(String title, Color color, int currentIndex, Widget screen) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(title),
-        actions: <Widget>[
-      IconButton(
-      icon: Icon(Icons.exit_to_app),
-      onPressed: () {
-        logOut();
-      },
-    )
-    ]),
+      // appBar: AppBar(title: Text(title)),
+
       body: Container(
         color: color,
-        child: Center(child: Text(title)),
+        child: screen,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (index) {
           if (index==0) context.bloc<NavbarBloc>().add(NavbarItems.Homepage);
-          if (index==1) context.bloc<NavbarBloc>().add(NavbarItems.Profile);
+          if (index==1) context.bloc<NavbarBloc>().add(NavbarItems.History);
+          if (index==2) context.bloc<NavbarBloc>().add(NavbarItems.Profile);
         },
         items: [
           BottomNavigationBarItem(icon:Icon(Icons.home), title: Text('Homepage')),
+          BottomNavigationBarItem(icon: Icon(Icons.history), title: Text('History')),
           BottomNavigationBarItem(icon:Icon(Icons.person), title: Text('Profile')),
         ],
       ),

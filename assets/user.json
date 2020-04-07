@@ -1,0 +1,32 @@
+[
+    {
+      "name":"MR. X",
+      "address":"gatau alamatnya tanya orangnya aja",
+      "contact" : "12345678",
+      "photo": "https://previews.123rf.com/images/triken/triken1608/triken160800028/61320729-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg"
+    },
+    {
+      "name":"MR Y",
+      "address":"Jl. berdua jadian kagak",
+      "contact" : "12345678",
+      "photo": "https://previews.123rf.com/images/triken/triken1608/triken160800028/61320729-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg"
+    },
+    {
+      "name":"MR Z",
+      "address":"Jl. ni aja dulu",
+      "contact" : "12345678",
+      "photo": "https://previews.123rf.com/images/triken/triken1608/triken160800028/61320729-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg"
+    },
+    {
+      "name":"MR A",
+      "address":"Dirumah",
+      "contact" : "1234",
+      "photo": "https://previews.123rf.com/images/triken/triken1608/triken160800028/61320729-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg"
+    },
+    {
+      "name":"MR Q",
+      "address":"Jl. sama siapa jadian sama siapa",
+      "contact" : "12345678",
+      "photo": "https://previews.123rf.com/images/triken/triken1608/triken160800028/61320729-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg"
+    }
+  ]
