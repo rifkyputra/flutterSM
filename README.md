@@ -1,5 +1,5 @@
 # Simona App
-(Work In Progress - WIP)
+(DISCONTINUED - MOVED TO GITLAB)
 Final Project Attendance SMM
 
 
